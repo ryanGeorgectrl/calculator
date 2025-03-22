@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Calculator</title>
+    <style>
+        #zero{
+            width: 110px;
+            border-radius: 25px;
+        }
+        #uslessTwo{
+            background-color:rgb(86, 86, 86);
+            visibility: hidden;
+        }
+        #useless1{
+            background-color: rgb(0,0,0);
+        }
+        #useless{
+            background-color: rgb(0, 0, 0);
+        }
+        #delete {
+            background-color: rgb(36, 36, 36);
+            width: 103px;
+            border-radius: 25px;
+        }
+        #delete1{
+            background-color: rgb(36, 36, 36);
+            width: 50px;
+            border: none;
+            font-size: 16px;
+            border-radius: 25px;
+        }
+
+        #operators {
+            background-color: orange;
+        }
+
+        body {
+            background-color: black;
+            transition: background-color 0.5s ease;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            grid-gap: 10px;
+            justify-content: center;
+            margin: 50px auto;
+        }
+
+        button {
+            background-color: rgb(36, 36, 36);
+            width: 50px;
+            height: 50px;
+            border: none;
+            font-size: 16px;
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #display {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+            transition: color 0.15s ease;
+        }
+    </style>
+</head>
+<body>
+    <div><h1 id="display"> </h1></div>
+    <div class="calculator-grid">
+        <button id='delete' onclick="document.getElementById('display').textContent = '';">AC</button>
+        <button id = 'uslessTwo'> </button>
+        <button id='delete1' onclick="document.getElementById('display').textContent = document.getElementById('display').textContent.slice(0, -1);">C</button>
+        <button id = 'useless'></button>
+        <button onclick="document.getElementById('display').textContent += '9';">9</button>
+        <button onclick="document.getElementById('display').textContent += '8';">8</button>
+        <button onclick="document.getElementById('display').textContent += '7';">7</button>
+        <button id = 'operators' onclick="document.getElementById('display').textContent += '+';">+</button>
+        <button onclick="document.getElementById('display').textContent += '6';">6</button>
+        <button onclick="document.getElementById('display').textContent += '5';">5</button>
+        <button onclick="document.getElementById('display').textContent += '4';">4</button>
+        <button id = 'operators' onclick="document.getElementById('display').textContent += '-';">-</button>
+        <button onclick="document.getElementById('display').textContent += '3';">3</button>
+        <button onclick="document.getElementById('display').textContent += '2';">2</button>
+        <button onclick="document.getElementById('display').textContent += '1';">1</button>
+        <button id = 'operators' onclick="document.getElementById('display').textContent += '*';">×</button>
+        <button id = 'zero' onclick="document.getElementById('display').textContent += '0';">0</button>
+        <button id = 'useless2'></button>
+        <button onclick="document.getElementById('display').textContent = eval(document.getElementById('display').textContent.replace('×', '*').replace('÷', '/'));">=</button>
+        <button id = 'operators' onclick="document.getElementById('display').textContent += '÷';">÷</button>
+    </div>
+<button id = 'apreciation'>☀️</button>
+<script>
+    document.getElementById('apreciation').onclick = () => {
+      if (document.getElementById('apreciation').textContent === '☀️') {
+        document.getElementById('apreciation').textContent = '🌙';
+        document.body.style.backgroundColor = 'white';
+        document.getElementById("display").style.color = 'black';
+        document.querySelectorAll('button').forEach(button => {
+            if (button.id !== 'operators' && button.id !== 'uslessTwo') {
+                button.style.color = 'black';
+                button.style.backgroundColor = 'lightgray';
+            }
+        });
+        document.getElementById('uslessTwo').style.visibility = 'hidden';
+      } else {
+        document.getElementById('apreciation').textContent = '☀️';
+        document.body.style.backgroundColor = 'black';
+        document.getElementById("display").style.color = 'white';
+        document.querySelectorAll('button').forEach(button => {
+            if (button.id !== 'operators') {
+                button.style.color = 'white';
+                button.style.backgroundColor = 'rgb(36, 36, 36)';
+            }
+        });
+        document.getElementById('operators').style.backgroundColor = 'orange';
+        document.getElementById('zero').style.backgroundColor = 'rgb(36, 36, 36)';
+        document.getElementById('delete').style.backgroundColor = 'rgb(36, 36, 36)';
+        document.getElementById('delete1').style.backgroundColor = 'rgb(36, 36, 36)';
+        document.getElementById('uslessTwo').style.visibility = 'hidden'; 
+      }
+      document.getElementById('display').textContent = ' ';
+    };
+</script>
+</body>
+</html>
